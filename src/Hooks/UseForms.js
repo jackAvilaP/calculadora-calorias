@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const useForm = (initialForm = {}) => {
+export const useForms = (initialForm = {}) => {
   const [formstate, setFormstate] = useState(initialForm);
 
   //captura los valores del input por medio del evento

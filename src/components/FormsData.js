@@ -1,16 +1,24 @@
 import React from "react";
 import "../styles/FormsData.css";
-import { useForm } from '../Hooks/UseForms';
+import { useForms } from '../Hooks/useForms';
 
 function FormsData() {
+  /*
+  calculo de calorias
+  Hombre: (9.99 * peso kg) + (6.25 * estatura en cm) – (4.92 * edad) + 5
+  Mujer: (9.99 * peso) + (6.25 * estatura en cm) – (4.92 * edad) – 161*/
 
-  const {formstata, onInputChange, edad,altura,peso,actvidad} = useForm({
+  const {formstate, onInputChange, edad,altura,peso,actvidad} = useForms({
     edad: 0,
     altura:0,
     peso:0,
     actvidad:0
   });
-      
+
+  const submit =()=>{
+    console.log(formstate)
+  }
+  
   return (
     <div className="card backglass my-4">
       <div className="card-body">
@@ -20,7 +28,7 @@ function FormsData() {
         <form>
           <div className="mb-3 content">
             <label htmlFor="edad">Edad</label>
-            <input type="number" id="edad" placeholder="digíte su edad" onChange={onInputChange} value={edad}/>
+            <input type="number" id="edad" placeholder="digíte su edad" name="edad" value={edad} onChange={onInputChange} />
           </div>
           <div className="mb-3 content">
             <label htmlFor="peso">Peso</label>
@@ -28,8 +36,9 @@ function FormsData() {
               type="number"
               id="peso"
               placeholder="digíte su peso en kílogramos"
-              onChange={onInputChange} 
+              name="peso"
               value={peso}
+              onChange={onInputChange} 
             />
           </div>
           <div className="mb-3 content">
@@ -38,13 +47,14 @@ function FormsData() {
               type="number"
               id="altura"
               placeholder="digíte su altura en centímetros"
-              onChange={onInputChange}
+              name="altura"
               value={altura}
+              onChange={onInputChange}
             />
           </div>
           <div className="mb-3 content">
             <label htmlFor="actividad">Actividad física</label>
-            <select className="form-select" name="actividad" id="actividad" onChange={onInputChange} value={actvidad}>
+            <select className="form-select" name="actividad" id="actividad" >
               <option value="0"></option>
               <option value="1">Poco o ningún ejercicio</option>
               <option value="2">Ejercicio ligero(1-3 días a la semana)</option>
@@ -83,7 +93,7 @@ function FormsData() {
             </div>
           </div>
 
-          <button type="button" class="btn btn-outline-light btn-lg">
+          <button type="button" className="btn btn-outline-light btn-lg" onClick={submit}>
             Calcular
           </button>
         </form>
