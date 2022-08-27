@@ -1,74 +1,94 @@
 import React from "react";
 import "../styles/FormsData.css";
+import { useForm } from '../Hooks/UseForms';
+
 function FormsData() {
+
+  const {formstata, onInputChange, edad,altura,peso,actvidad} = useForm({
+    edad: 0,
+    altura:0,
+    peso:0,
+    actvidad:0
+  });
+      
   return (
-    <form>
-      <div classNameName=" mb-3">
-        <label className="form-label">Age</label>
-        <input
-          className="form-control"
-          type="text"
-          placeholder="Type your age"
-        />
+    <div className="card backglass my-4">
+      <div className="card-body">
+        <h3 className="card-title d-flex justify-content-center">
+          Calculadora de calorias
+        </h3>
+        <form>
+          <div className="mb-3 content">
+            <label htmlFor="edad">Edad</label>
+            <input type="number" id="edad" placeholder="digíte su edad" onChange={onInputChange} value={edad}/>
+          </div>
+          <div className="mb-3 content">
+            <label htmlFor="peso">Peso</label>
+            <input
+              type="number"
+              id="peso"
+              placeholder="digíte su peso en kílogramos"
+              onChange={onInputChange} 
+              value={peso}
+            />
+          </div>
+          <div className="mb-3 content">
+            <label htmlFor="altura">Altura</label>
+            <input
+              type="number"
+              id="altura"
+              placeholder="digíte su altura en centímetros"
+              onChange={onInputChange}
+              value={altura}
+            />
+          </div>
+          <div className="mb-3 content">
+            <label htmlFor="actividad">Actividad física</label>
+            <select className="form-select" name="actividad" id="actividad" onChange={onInputChange} value={actvidad}>
+              <option value="0"></option>
+              <option value="1">Poco o ningún ejercicio</option>
+              <option value="2">Ejercicio ligero(1-3 días a la semana)</option>
+              <option value="3">
+                Ejercicio moderado(3-5 días a la semana)
+              </option>
+              <option value="4">Ejercicio fuerte(6-7 días a la semana)</option>
+              <option value="5">
+                Ejercicio muy fuerte(dos veces al día, entrenamientos muy duros)
+              </option>
+            </select>
+          </div>
+          <div className="mb-3 content sex">
+            <label htmlFor="actividad">Sexo</label>
+            <div className="form-check d-flex align-items-center">
+              <input
+                type="radio"
+                className="form-check-input"
+                name="checkMasculino"
+                id="checkMasculino"
+              />
+              <label htmlFor="checkMasculino" className="form-check-label">
+                Masculino
+              </label>
+            </div>
+            <div className="form-check d-flex align-items-center">
+              <input
+                type="radio"
+                className="form-check-input"
+                name="checkFemenino"
+                id="checkFemenino"
+              />
+              <label htmlFor="checkFemenino" className="form-check-label">
+                Femenino
+              </label>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-outline-light btn-lg">
+            Calcular
+          </button>
+        </form>
       </div>
-      <div className=" mb-3">
-        <label className="form-label">weight</label>
-        <input
-          className="form-control"
-          type="number"
-          placeholder="Enter your weight in kilograms"
-        />
-      </div>
-      <div className=" mb-3">
-        <label className="form-label">heigth</label>
-        <input
-          className="form-control"
-          type="number"
-          placeholder="Enter your heigth"
-        />
-      </div>
-      <div className="mb-3">
-        <div className="d-flex flex-column">
-          <label className="form-label">physical activity</label>
-          <select className="form-select mb-3">
-            <option selected>Select your physical activity </option>
-            <option value="1">Little or no exercise</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </div>
-      </div>
-      <div className="mb-3">
-      <label className="form-label">Sex</label>
-        <div class="form-check">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault1"
-          />
-          <label className="form-check-label" for="flexRadioDefault1">
-            Default radio
-          </label>
-        </div>
-        <div className="form-check">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="flexRadioDefault"
-            id="flexRadioDefault2"
-            checked
-          />
-          <label className="form-check-label" for="flexRadioDefault2">
-            Default checked radio
-          </label>
-        </div>
-      </div>
-      <hr></hr>
-      <button type="button" className="btn btn-primary btn-lg w-100">
-        Primary
-      </button>
-    </form>
+    </div>
   );
 }
 

@@ -11,9 +11,8 @@ function App() {
       <NavBars />
       <div className="App">
         <section className="d-flex flex-direction-row justify-content-around w-100">
-          {/* <FormsData /> */}
+          <FormsData /> 
           <Cards />
-          <Infom />
         </section>
       </div>
     </div>
