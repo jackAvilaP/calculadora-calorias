@@ -1,6 +1,7 @@
-.container-navBar{
+.container-navBar {
+    background-color: #384047 !important;
     font-size: 1.5em;
 }
-.nav-link{
-    color: black;
+.nav-link {
+    color: white;
 }

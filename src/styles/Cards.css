@@ -1,0 +1,50 @@
+.card {
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    color: white;
+
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+    width: 30rem;
+
+    border-top-color: rgba(255, 255, 255, 0.5);
+    border-left-color: rgba(255, 255, 255, 0.5);
+    border-right-color: rgba(255, 255, 255, 0.2);
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.backglass {
+    background-color: rgba(225, 255, 255, 0.1);
+}
+.content {
+    display: flex;
+    flex-direction: column;
+}
+.content input, select {
+    border-radius: 0.7rem;
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 0.945);
+}
+
+select{
+    width: 23rem;
+    height: 2.4rem;
+}
+.sex{
+    width: 23rem;
+}
+.btn {
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    width: 23rem;
+}
+
+.btn:hover {
+    box-shadow: 0 0.3rem rgba(0, 0, 0, 0.2);
+}
