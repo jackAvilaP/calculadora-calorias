@@ -1,16 +1,21 @@
 import React from "react";
-import "./App.css";
-import FormsData from "./components/FormsData";
 
+//styles
+import "./App.css";
+import Footer from "./components/Footer";
+
+//components
 import NavBars from "./components/NavBars";
+import Users from "./components/Users";
 
 function App() {
   return (
     <div>
       <NavBars />
       <div className="App">
-          <FormsData /> 
+         <Users/>  
       </div>
+      <Footer/>
     </div>
   );
 }

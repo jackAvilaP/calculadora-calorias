@@ -4,7 +4,7 @@ import "../styles/FormsData.css";
 import Cards from "./Cards";
 
 
-function FormsData() {
+function FormsData({nombre, documento}) {
 
   /*
   calculo de calorias
@@ -131,7 +131,7 @@ function FormsData() {
         </div>
       </div>
 
-      <Cards resultado={resultado.toFixed(1)} IMC={IMC.toFixed(1)} />
+      <Cards resultado={resultado.toFixed(1)} IMC={IMC.toFixed(1)} nombre={nombre} documento={documento} edad={data.edad}/>
 
     </section>
   );
