@@ -1,25 +1,27 @@
 import { useState } from "react";
 
 export const useForms = (initialForm = {}) => {
-  const [formstate, setFormstate] = useState(initialForm);
+  const [data, setData] = useState(initialForm);
 
   //captura los valores del input por medio del evento
-  const onInputChage = ({ target }) => {
+  const onInputChange = ({ target }) => {
+
     const { name, value } = target;
-    setFormstate({
-      ...formstate,
+    setData({
+      ...data,
       [name]: value
     });
-  };
+  }
+
 
   const onResetForm = () => {
-    setFormstate(initialForm);
+    setData(initialForm);
   };
 
   return {
-    ...formstate, //para poder destructurar el obj
-    formstate,
+    ...data, //para poder destructurar el obj
+    data,
     onResetForm,
-    onInputChage
+    onInputChange
   };
 };
