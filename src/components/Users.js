@@ -14,14 +14,15 @@ const Users = () => {
   const { data, onInputChange } = useForms({
     nombre: null,
     documento: null,
+    idDocumento: null
   });
   const submit = () => {
-    data.nombre && data.documento && setTogle(!togle);
+   data.nombre && data.documento && setTogle(!togle);
   };
   return (
     <div className="d-flex flex-direction-row justify-content-center content-home">
       {togle ? (
-        <FormsData nombre={data.nombre} documento={data.documento}/>
+        <FormsData nombre={data.nombre} documento={data.documento} idDocumento={data.idDocumento}/>
       ) : (
         <div className="card backglass my-4">
           <div className="card-boby d-flex justify-content-center flex-column">
@@ -42,6 +43,11 @@ const Users = () => {
               </div>
               <div className="mb-4 content">
                 <label htmlFor="documento">Documento</label>
+                <select className="form-select my-2" id="idDocumento" name="idDocumento" onChange={onInputChange} >
+                <option name="idDocumento" ></option>
+                <option name="idDocumento" onChange={onInputChange} value={"CC"}>Cedula de identidad</option>
+                <option name="idDocumento" onChange={onInputChange} value={"TI"}>Tarjeta de identidad</option>
+                </select>
                 <input
                   type="number"
                   id="documento"

@@ -1,5 +1,6 @@
 import React from "react";
 
+
 import "../styles/Footer.css"
 
 const Footer = () => {
@@ -8,14 +9,14 @@ const Footer = () => {
       <footer class="footer row p-3">
         <div class="col d-flex justify-content-right align-items-center">
           <ul>
-            <li>
-              ✖️ <a href="#">Instagram</a>
+            <li className="icons">
+               <box-icon color="white" type='logo' name='instagram'></box-icon><a href="#">Instagram</a>
             </li>
-            <li>
-              ✖️ <a href="#">Facebook</a>
+            <li className="icons">
+              <box-icon color="white" type='logo' name='facebook-circle'></box-icon><a href="#">Facebook</a>
             </li>
-            <li>
-              ✖️ <a href="#">Telegram</a>
+            <li className="icons">
+              <box-icon color="white" name='telegram' type='logo' ></box-icon> <a href="#">Telegram</a>
             </li>
           </ul>
         </div>
