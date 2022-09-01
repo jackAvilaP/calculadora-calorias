@@ -14,6 +14,7 @@ function FormsData({nombre, documento, idDocumento}) {
 
   const [resultado, setResultado] = useState(0);
   const [IMC, setIMC] = useState(0);
+  const [show, setShow] = useState(false);
 
   const { data, onInputChange } = useForms({
     edad: null,
@@ -38,6 +39,14 @@ function FormsData({nombre, documento, idDocumento}) {
   const submit = () => {
     data.sexo === 'M' ? setResultado(calculo + 5) : setResultado(calculo - 161);
     setIMC(data.peso / alturaIMC);
+    
+    if(data.edad && data.sexo && data.altura && data.peso && data.actividad){
+      setShow(!show);
+    }
+
+    if(data.edad == null || data.sexo == null || data.altura == null || data.peso == null || data.actividad == null){
+      setShow(false)
+    }
   }
 
 
@@ -127,11 +136,12 @@ function FormsData({nombre, documento, idDocumento}) {
             <button type="button" className="btn btn-outline-light btn-lg" onClick={submit}>
               Calcular
             </button>
+            
           </form>
         </div>
       </div>
 
-      <Cards resultado={resultado.toFixed(1)} IMC={IMC.toFixed(1)} nombre={nombre} documento={documento} edad={data.edad} idDocumento={idDocumento}/>
+      <Cards resultado={resultado.toFixed(1)} IMC={IMC.toFixed(1)} nombre={nombre} documento={documento} edad={data.edad} idDocumento={idDocumento}show={show} />
 
     </section>
   );

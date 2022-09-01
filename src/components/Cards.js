@@ -1,8 +1,8 @@
 import React from 'react'
 import '../styles/Cards.css'
-const Cards = ({ resultado, IMC, nombre, documento, edad, idDocumento}) => {
+const Cards = ({ resultado, IMC, nombre, documento, edad, idDocumento,show}) => {
     return (
-        <div className='card backglass my-4'>       
+        <div className={'cards d-flex justify-content-center backglass my-4 '+(show && "viewsOn")}>       
             <div className="card-body d-flex justify-content-center align-items-center flex-column">
 
                 {/* <div className='content-pro d-flex justify-content-end align-items-center flex-column'>
