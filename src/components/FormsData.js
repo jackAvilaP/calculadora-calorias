@@ -16,7 +16,7 @@ function FormsData({ nombre, documento, idDocumento }) {
   const [IMC, setIMC] = useState(0);
   const [show, setShow] = useState(false);
 
-  const { data, onInputChange } = useForms({
+  const { data, onInputChange, onValidation } = useForms({
     edad: null,
     altura: null,
     peso: null,
@@ -43,12 +43,15 @@ function FormsData({ nombre, documento, idDocumento }) {
 
   const submit = (e) => {
     e.preventDefault();
+    const arrayValiadtion = onValidation();
+    
     data.sexo === 'M' ? setResultado(calculo + 5) : setResultado(calculo - 161);
     setIMC(data.peso / alturaIMC);
 
     if (data.edad && data.sexo && data.altura && data.peso && data.actividad) {
       setShow(true);
     }
+
   }
   // const objt = { "background-color": "#f8d7da" };
   return (
@@ -66,13 +69,10 @@ function FormsData({ nombre, documento, idDocumento }) {
                 id="edad"
                 placeholder="digíte su edad"
                 name="edad"
-
+                
                 onChange={onInputChange}
                 required
               />
-              <div className="invalid-feedback">
-                Por favor, ingresa tu edad.
-              </div>
             </div>
             <div className="mb-3 content">
               <label htmlFor="peso">Peso</label>
