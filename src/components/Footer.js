@@ -6,8 +6,8 @@ import "../styles/Footer.css"
 const Footer = () => {
   return (
     <div>
-      <footer class="footer row p-3">
-        <div class="col d-flex justify-content-right align-items-center">
+      <footer className="footer row p-3">
+        <div className="col d-flex justify-content-right align-items-center">
           <ul>
             <li className="icons">
                <box-icon color="white" type='logo' name='instagram'></box-icon><a href="#">Instagram</a>
@@ -20,7 +20,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div class="col d-flex justify-content-right align-items-center">
+        <div className="col d-flex justify-content-right align-items-center">
           <ul>
             <li>
               <a href="#">Servicios</a>
@@ -33,8 +33,8 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
-          <p class="m-0">
+        <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">
+          <p className="m-0">
             <span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
               optio voluptate qui adipisci, hic voluptatibus totam dolorem

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForms } from "../Hooks/UseForms";
 import "../styles/FormsData.css";
 import Cards from "./Cards";
 
 
-function FormsData({nombre, documento, idDocumento}) {
+function FormsData({ nombre, documento, idDocumento }) {
 
   /*
   calculo de calorias
@@ -24,6 +24,11 @@ function FormsData({nombre, documento, idDocumento}) {
     sexo: null
   });
 
+  //esconde el resultado si hay cambio en los valores de data 
+  useEffect(() => {
+    setShow(false);
+  }, [data])
+
   const multiplicadorTMB = {
     peso: 10,
     altura: 6.25,
@@ -36,29 +41,24 @@ function FormsData({nombre, documento, idDocumento}) {
   );
   const alturaIMC = Math.pow(data.altura, 2) / 10000;
 
-  const submit = () => {
+  const submit = (e) => {
+    e.preventDefault();
     data.sexo === 'M' ? setResultado(calculo + 5) : setResultado(calculo - 161);
     setIMC(data.peso / alturaIMC);
-    
-    if(data.edad && data.sexo && data.altura && data.peso && data.actividad){
-      setShow(!show);
-    }
 
-    if(data.edad == null || data.sexo == null || data.altura == null || data.peso == null || data.actividad == null){
-      setShow(false)
+    if (data.edad && data.sexo && data.altura && data.peso && data.actividad) {
+      setShow(true);
     }
   }
-
-
+  // const objt = { "background-color": "#f8d7da" };
   return (
     <section className="d-flex flex-direction-row justify-content-around w-100">
-
       <div className="card backglass my-4">
         <div className="card-body">
           <h3 className="card-title d-flex justify-content-center">
             Calculadora de calorias
           </h3>
-          <form>
+          <form className="needs-validation " onSubmit={submit} noValidate>
             <div className="mb-3 content">
               <label htmlFor="edad">Edad</label>
               <input
@@ -66,9 +66,13 @@ function FormsData({nombre, documento, idDocumento}) {
                 id="edad"
                 placeholder="digíte su edad"
                 name="edad"
+
                 onChange={onInputChange}
                 required
               />
+              <div className="invalid-feedback">
+                Por favor, ingresa tu edad.
+              </div>
             </div>
             <div className="mb-3 content">
               <label htmlFor="peso">Peso</label>
@@ -133,16 +137,15 @@ function FormsData({nombre, documento, idDocumento}) {
               </div>
             </div>
 
-            <button type="button" className="btn btn-outline-light btn-lg" onClick={submit}>
+            <button type="submit" className="btn btn-outline-light btn-lg">
               Calcular
             </button>
-            
+
           </form>
         </div>
       </div>
 
-      <Cards resultado={resultado.toFixed(1)} IMC={IMC.toFixed(1)} nombre={nombre} documento={documento} edad={data.edad} idDocumento={idDocumento}show={show} />
-
+      <Cards resultado={resultado.toFixed(1)} IMC={IMC.toFixed(1)} nombre={nombre} documento={documento} edad={data.edad} idDocumento={idDocumento} show={show} />
     </section>
   );
 }
